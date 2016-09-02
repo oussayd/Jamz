@@ -1,5 +1,7 @@
-package org.example.spring.mongodb.service;
+package org.example.spring.mongodb.utils;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -10,7 +12,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import org.example.spring.mongodb.utils.UrlInfo;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 public class Utils {
 
@@ -25,14 +29,13 @@ public class Utils {
 	}
 
 	public static BigDecimal parse(final String amount, final Locale locale) throws ParseException {
-	    final NumberFormat format = NumberFormat.getNumberInstance(locale);
-	    if (format instanceof DecimalFormat) {
-	        ((DecimalFormat) format).setParseBigDecimal(true);
-	    }
-	    return (BigDecimal) format.parse(amount.replaceAll("[^\\d.,]",""));
+		final NumberFormat format = NumberFormat.getNumberInstance(locale);
+		if (format instanceof DecimalFormat) {
+			((DecimalFormat) format).setParseBigDecimal(true);
+		}
+		return (BigDecimal) format.parse(amount.replaceAll("[^\\d.,]", ""));
 	}
-	
-	
+
 	public static UrlInfo getUrlInfos(String _url) {
 		String domain = null;
 		String locale = null;
@@ -44,6 +47,23 @@ public class Utils {
 		}
 		return new UrlInfo(domain, locale);
 
+	}
+
+	public static UrlListObject getUrlList(String fileName) {
+
+		// Read from File to String
+		UrlListObject urlListObject = null;
+		Gson gson = new Gson();
+		try {
+			JsonParser parser = new JsonParser();
+
+			JsonElement jsonElement = parser.parse(new FileReader(fileName));
+			urlListObject = gson.fromJson(jsonElement.getAsJsonObject(), UrlListObject.class);
+			System.out.println(urlListObject);
+		} catch (FileNotFoundException e) {
+			System.err.println(e);
+		}
+		return urlListObject;
 	}
 
 	// public Float parsePrice(String stringPrice, locale) {

@@ -34,5 +34,9 @@ public class LinkInfo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "LinkInfo [LINK=" + LINK + ", CATEGORIE=" + CATEGORIE + ", PAYS=" + PAYS + "]";
+	}
     
 }

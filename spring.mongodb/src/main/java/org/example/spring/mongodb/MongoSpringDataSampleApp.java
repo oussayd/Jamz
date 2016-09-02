@@ -31,7 +31,7 @@ public class MongoSpringDataSampleApp implements CommandLineRunner {
 
     @Override
     public void run(String... paramArrayOfString) throws Exception {
-    	finderService.recherchePrix(0);
+    	finderService.recherchePrix();
 
         // save a couple of customers
 //        customerDao.save(new Customer("Alice", "Smith", null, 19));

@@ -1,4 +1,4 @@
-{
+{urlList : {
     ONDULEUR: {
         ONDULEUR_FR: {
             CATEGORIE: 'ONDULEUR',
@@ -1154,4 +1154,4 @@
     }
 
 
-}
+}}

@@ -69,6 +69,7 @@ public class Deal {
 		this.prix = prix;
 		this.img = img;
 		this.lastUpdate = lastUpdate;
+		this.prixLocaux = new PrixLocaux();
 	}
 
 
@@ -172,10 +173,8 @@ public class Deal {
 
 	@Override
 	public String toString() {
-		return "Deal [titre=" + titre + ", asin=" + asin + ", categorie=" + categorie + ", pays=" + pays + ", url="
-				+ url + ", prix=" + prix + ", prixLocaux=" + prixLocaux + ", stock=" + stock + ", reduction="
-				+ reduction + ", reductionGlobale=" + reductionGlobale + ", img=" + img + ", lastUpdate=" + lastUpdate
-				+ ", version=" + version + "]";
+		return "Deal [titre=" + titre.substring(10) + ", asin=" + asin + ", categorie=" + categorie + ", pays=" + pays + ", prix=" + prix + ", prixLocaux=" + prixLocaux + ", stock=" + stock + ", reduction="
+				+ reduction + ", reductionGlobale=" + reductionGlobale + "]";
 	}
 
 

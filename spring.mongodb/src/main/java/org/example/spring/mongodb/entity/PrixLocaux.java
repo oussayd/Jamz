@@ -36,6 +36,10 @@ public class PrixLocaux {
 		return "PrixLocaux [it=" + it + ", fr=" + fr + ", de=" + de + ", couk=" + couk + "]";
 	}
 	public PrixLocaux() {
+		this.it = -1f;
+		this.de = -1f;
+		this.couk = -1f;
+		this.fr = -1f;
 	}
 	public PrixLocaux(Float it, Float fr, Float de, Float couk) {
 		this.it = it;
